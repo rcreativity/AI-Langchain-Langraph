@@ -1,7 +1,8 @@
 # LangChain & LangGraph & Deep Agents ([Link](./Deep-Agents.md)) (via Example Learning)
 
-> Last updated: June 2026
+> Last updated: June 2026 
 
+## 🧠 Also covers RAG VS Fine Tuning topic
 ---
 
 ## ✅ Completed
@@ -233,3 +234,255 @@ Website / PDF / CSV
 - **Supervisor prompt must use exact agent names** — `math_expert` not `math_agent`
 - **`afterModel` hook shape** — must be `afterModel: { canJumpTo: [...], hook: async (state) => {} }`
 - **Tool-call guard in safety middleware** — skip `jumpTo: "end"` if `lastMessage.tool_calls?.length > 0`
+##
+# RAG VS Fine Tuning
+![RAG VS Fine Tuning](rag-vs-fine-tuning.png)
+
+# RAG vs Fine-Tuning
+
+## What are they?
+
+| RAG                                          | Fine-Tuning                                 |
+| -------------------------------------------- | ------------------------------------------- |
+| Gives the LLM external knowledge at runtime. | Changes the LLM's weights through training. |
+| No retraining required.                      | Requires retraining the model.              |
+| Best for dynamic data.                       | Best for changing model behavior or style.  |
+
+---
+
+# High-Level Architecture
+
+```text
+RAG
+
+User Question
+      │
+      ▼
+Retrieve Relevant Documents
+      │
+      ▼
+Question + Context
+      │
+      ▼
+LLM
+      │
+      ▼
+Answer
+```
+
+```text
+Fine-Tuning
+
+Training Data
+      │
+      ▼
+Train Model
+      │
+      ▼
+Fine-Tuned Model
+      │
+      ▼
+User Question
+      │
+      ▼
+Answer
+```
+
+---
+
+# How They Work
+
+## RAG
+
+```text
+Documents
+      │
+      ▼
+Split into Chunks
+      │
+      ▼
+Create Embeddings
+      │
+      ▼
+Vector Store
+      │
+──────────────────────────────
+      │
+User Question
+      │
+      ▼
+Similarity Search
+      │
+      ▼
+Top Chunks
+      │
+      ▼
+LLM
+      │
+      ▼
+Answer
+```
+
+---
+
+## Fine-Tuning
+
+```text
+Training Dataset
+      │
+      ▼
+Train Model
+      │
+      ▼
+Update Model Weights
+      │
+      ▼
+Save Fine-Tuned Model
+      │
+──────────────────────────────
+      │
+User Question
+      │
+      ▼
+Fine-Tuned Model
+      │
+      ▼
+Answer
+```
+
+---
+
+# Comparison
+
+| Feature                    | RAG                        | Fine-Tuning        |
+| -------------------------- | -------------------------- | ------------------ |
+| Updates knowledge          | ✅ Easy                     | ❌ Retrain required |
+| Uses external documents    | ✅ Yes                      | ❌ No               |
+| Changes model behavior     | ❌ No                       | ✅ Yes              |
+| Cost                       | Low                        | High               |
+| Speed to update            | Minutes                    | Hours/Days         |
+| Hallucination reduction    | High (with good retrieval) | Limited            |
+| Needs Vector DB            | ✅ Yes                      | ❌ No               |
+| Needs Training Data        | ❌ No                       | ✅ Yes              |
+| Best for company documents | ✅ Yes                      | ❌ No               |
+| Best for writing style     | ❌ No                       | ✅ Yes              |
+
+---
+
+# When to Use RAG
+
+Use RAG when:
+
+* Company knowledge base
+* PDF search
+* Website chatbot
+* Internal documentation
+* Product manuals
+* FAQs
+* Frequently changing information
+
+Example:
+
+```text
+Question:
+What is our leave policy?
+
+↓
+
+Retrieve HR Policy PDF
+
+↓
+
+LLM answers using the latest policy.
+```
+
+---
+
+# When to Use Fine-Tuning
+
+Use Fine-Tuning when:
+
+* Custom writing style
+* Domain-specific vocabulary
+* Consistent response format
+* Classification tasks
+* Code generation style
+* Brand voice
+
+Example:
+
+```text
+Train with:
+
+Question:
+Write a support reply.
+
+↓
+
+Model always responds in your company's tone.
+```
+
+---
+
+# Real-World Examples
+
+| Problem                                   | Solution      |
+| ----------------------------------------- | ------------- |
+| Chat with PDFs                            | ✅ RAG         |
+| Company documentation assistant           | ✅ RAG         |
+| Customer support bot with latest policies | ✅ RAG         |
+| Medical research search                   | ✅ RAG         |
+| Financial reports Q&A                     | ✅ RAG         |
+| Brand-specific writing style              | ✅ Fine-Tuning |
+| SQL generation in a fixed format          | ✅ Fine-Tuning |
+| Email generation with company tone        | ✅ Fine-Tuning |
+
+---
+
+# Can They Be Used Together?
+
+Yes. This is common in production.
+
+```text
+User Question
+      │
+      ▼
+Retrieve Company Documents (RAG)
+      │
+      ▼
+Fine-Tuned LLM
+      │
+      ▼
+Answer
+```
+
+* **RAG** provides up-to-date knowledge.
+* **Fine-Tuning** provides the desired behavior and response style.
+
+---
+
+# Simple Rule to Remember
+
+```text
+Need latest information?
+        │
+        └──► Use RAG
+
+Need to change how the model behaves?
+        │
+        └──► Use Fine-Tuning
+
+Need both?
+        │
+        └──► Combine RAG + Fine-Tuning
+```
+
+---
+
+# One-Line Difference
+
+```text
+RAG         = Give the model external knowledge before answering.
+
+Fine-Tuning = Teach the model new behavior by training it.
+```
