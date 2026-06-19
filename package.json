@@ -4,9 +4,13 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@langchain/classic": "^1.0.36",
+    "@langchain/community": "^1.1.29",
     "@langchain/langgraph": "^1.4.4",
     "@langchain/langgraph-supervisor": "^1.1.1",
     "@langchain/langgraph-swarm": "^1.0.2",
+    "@langchain/textsplitters": "^1.0.1",
+    "cheerio": "^1.2.0",
     "dotenv": "^17.4.2",
     "langchain": "^1.4.5",
     "zod": "^4.4.3"
@@ -26,7 +30,8 @@
     "swarmAgentGraph": "node LangSwarn/multiagentGraph.js",
     "swarmAgentManually": "node LangSwarn/swarnManually.js",
     "guardrails": "node guardrails/guardrails.js",
-    "langgraphSupervisor": "node langgraph-supervisor/langgraph-supervisor.js"
+    "langgraphSupervisor": "node langgraph-supervisor/langgraph-supervisor.js",
+    "rag": "node rag/normal-rag.js"
   },
   "keywords": [],
   "author": "",

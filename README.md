@@ -1,10 +1,92 @@
-# LangChain & LangGraph
+# LangChain & LangGraph (via Example Learning)
 
 > Last updated: June 2026
 
 ---
 
 ## ✅ Completed
+### RAG
+
+# How it works — 3 phases
+
+```text
+INDEXING (runs once)          RETRIEVAL + GENERATION (runs per query)
+──────────────────            ──────────────────────────────────────
+Load URL / PDF / CSV          User asks question
+        ↓                            ↓
+Load documents                Agent calls retrieve()
+        ↓                            ↓
+Split into chunks             similaritySearch() → Top 3 chunks
+        ↓                            ↓
+Create embeddings             Retrieve relevant chunks
+        ↓                            ↓
+Store in Vector Store         LLM gets:
+                              • User question
+                              • Retrieved chunks
+                                      ↓
+                                Generate answer
+```
+
+---
+
+# Swap out pieces as needed
+
+| Part             | Current                          | Alternatives                                                 |
+| ---------------- | -------------------------------- | ------------------------------------------------------------ |
+| **Loader**       | `CheerioWebBaseLoader`           | `WebBaseLoader`, `PDFLoader`, `CSVLoader`, `DirectoryLoader` |
+| **Splitter**     | `RecursiveCharacterTextSplitter` | `TokenTextSplitter`, `MarkdownTextSplitter`                  |
+| **Embeddings**   | `text-embedding-3-small`         | `text-embedding-3-large`, `Cohere`, `Mistral`, `Ollama`      |
+| **Vector Store** | `MemoryVectorStore`              | `Chroma`, `FAISS`, `Pinecone`, `PGVector`, `Qdrant`          |
+| **Retriever**    | `similaritySearch()`             | `asRetriever()`, `MMR Retriever`, `MultiQueryRetriever`      |
+| **Model**        | `gpt-4.1-mini`                   | Any `createAgent()` compatible model                         |
+
+---
+
+# Simple Flow
+
+```text
+                INDEXING (One Time)
+
+Website / PDF / CSV
+         │
+         ▼
+     Document Loader
+         │
+         ▼
+    Split into Chunks
+         │
+         ▼
+  Create Embeddings
+         │
+         ▼
+    Vector Database
+
+
+────────────────────────────────────────────
+
+
+      RETRIEVAL + GENERATION (Every Query)
+
+      User Question
+            │
+            ▼
+        retrieve()
+            │
+            ▼
+   similaritySearch()
+            │
+            ▼
+   Top K Relevant Chunks
+            │
+            ▼
+ Question + Retrieved Chunks
+            │
+            ▼
+            LLM
+            │
+            ▼
+       Final Answer
+```
 
 ### 🛡️ Guardrails
 - `piiMiddleware` — single middleware instance with `types[]` and `customDetectors`
