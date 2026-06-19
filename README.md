@@ -239,6 +239,253 @@ Example:
   4. Similarity metric
   5. Reranking model
 
+# Reranker Models Comparison (Open Source → Paid)
+
+## What is a Reranker?
+
+A **reranker** is a model that **re-scores retrieved documents** after the vector database returns the Top-K results.
+
+Instead of comparing embeddings, it reads both the **query** and the **document together** and predicts how relevant the document is.
+
+Typical RAG pipeline:
+
+```text
+User Query
+      │
+      ▼
+Embedding Model
+      │
+      ▼
+Vector Database
+      │
+      ▼
+Top 20 Documents
+      │
+      ▼
+Reranker
+      │
+      ▼
+Top 5 Documents
+      │
+      ▼
+LLM
+      │
+      ▼
+Answer
+```
+
+---
+
+# Embedding vs Reranker
+
+| Embedding Model | Reranker |
+|-----------------|----------|
+| Converts text into vectors | Reads query + document together |
+| Fast | Slower |
+| Used for retrieval | Used for ranking |
+| ANN Search | Cross Encoder |
+| Millions of documents | Tens or hundreds of documents |
+| One forward pass | One forward pass per query-document pair |
+| Approximate similarity | Precise relevance |
+
+---
+
+# Open Source Rerankers
+
+| Model | Organization | Parameters | Context | Best Use Case |
+|--------|--------------|-----------:|--------:|---------------|
+| bge-reranker-base | BAAI | 278M | 512 | General RAG |
+| bge-reranker-large | BAAI | 560M | 512 | High-quality retrieval |
+| bge-reranker-v2-m3 | BAAI | 568M | 8192 | Multilingual RAG |
+| bge-reranker-v2-gemma | BAAI | 2B | 8192 | Long-context reranking |
+| ms-marco-MiniLM-L6-v2 | Sentence Transformers | 22M | 512 | Lightweight reranking |
+| ms-marco-MiniLM-L12-v2 | Sentence Transformers | 33M | 512 | Better accuracy |
+| cross-encoder/ms-marco-MiniLM-L6-v2 | Sentence Transformers | 22M | 512 | Fast reranking |
+| cross-encoder/ms-marco-MiniLM-L12-v2 | Sentence Transformers | 33M | 512 | Better semantic ranking |
+| cross-encoder/ms-marco-electra-base | Sentence Transformers | 110M | 512 | Higher accuracy |
+| jina-reranker-v2-base | Jina AI | ~300M | 8192 | Long-context RAG |
+| jina-reranker-v2 | Jina AI | ~500M | 8192 | Enterprise retrieval |
+| Qwen3 Reranker | Alibaba | Varies | 32768 | Long-context multilingual |
+
+---
+
+# Commercial / API Rerankers
+
+| Model | Company | Context | Best Use Case |
+|--------|---------|--------:|---------------|
+| rerank-v3.5 | Cohere | 4096 | General-purpose reranking |
+| rerank-multilingual-v3.0 | Cohere | 4096 | 100+ languages |
+| rerank-v3 | Cohere | 4096 | Production RAG |
+| rerank-2 | Voyage AI | 32000 | State-of-the-art retrieval |
+| rerank-2-lite | Voyage AI | 32000 | Lower latency |
+| Voyage Contextual Reranker | Voyage AI | 32000 | Long-document ranking |
+
+---
+
+# Model Size Comparison
+
+| Model | Parameters |
+|--------|-----------:|
+| MiniLM-L6 | 22M |
+| MiniLM-L12 | 33M |
+| Electra Base | 110M |
+| BGE Base | 278M |
+| Jina Base | ~300M |
+| BGE Large | 560M |
+| BGE M3 | 568M |
+| Gemma Reranker | 2B |
+
+---
+
+# Speed Comparison
+
+| Model | Speed |
+|--------|-------|
+| MiniLM-L6 | ⭐⭐⭐⭐⭐ |
+| MiniLM-L12 | ⭐⭐⭐⭐ |
+| Electra | ⭐⭐⭐ |
+| BGE Base | ⭐⭐⭐ |
+| BGE Large | ⭐⭐ |
+| Jina | ⭐⭐ |
+| Gemma | ⭐ |
+
+---
+
+# Accuracy Comparison
+
+| Model | Accuracy |
+|--------|----------|
+| Gemma Reranker | ⭐⭐⭐⭐⭐ |
+| Voyage Rerank-2 | ⭐⭐⭐⭐⭐ |
+| Cohere Rerank-v3.5 | ⭐⭐⭐⭐⭐ |
+| BGE Reranker v2 M3 | ⭐⭐⭐⭐☆ |
+| Jina Reranker v2 | ⭐⭐⭐⭐☆ |
+| BGE Large | ⭐⭐⭐⭐ |
+| Electra | ⭐⭐⭐⭐ |
+| MiniLM-L12 | ⭐⭐⭐ |
+| MiniLM-L6 | ⭐⭐ |
+
+---
+
+# Memory Requirements (Approximate)
+
+| Model | RAM / VRAM |
+|--------|-----------:|
+| MiniLM-L6 | ~100 MB |
+| MiniLM-L12 | ~150 MB |
+| Electra | ~450 MB |
+| BGE Base | ~1 GB |
+| BGE Large | ~2 GB |
+| Jina | ~2 GB |
+| Gemma | 6–10 GB |
+
+---
+
+# Typical RAG Pipeline
+
+```text
+Documents
+     │
+     ▼
+Chunking
+     │
+     ▼
+Embedding Model
+     │
+     ▼
+Vector Database
+     │
+     ▼
+Top 20 Chunks
+     │
+     ▼
+Reranker
+     │
+     ▼
+Top 5 Chunks
+     │
+     ▼
+LLM
+     │
+     ▼
+Answer
+```
+
+---
+
+# When Should You Use a Reranker?
+
+Use a reranker if:
+
+- You want higher retrieval accuracy.
+- Your RAG system retrieves irrelevant chunks.
+- You search millions of documents.
+- You're building a production chatbot.
+- You're building enterprise search.
+- You're building legal, medical, or finance RAG systems.
+
+Skip the reranker if:
+
+- You have fewer than ~1,000 documents.
+- Latency is more important than accuracy.
+- You're building a prototype or MVP.
+
+---
+
+# Embedding + Reranker Pairing
+
+| Embedding Model | Recommended Reranker |
+|-----------------|----------------------|
+| BGE-small | BGE-reranker-base |
+| BGE-base | BGE-reranker-large |
+| BGE-M3 | BGE-reranker-v2-m3 |
+| E5-large | Cohere Rerank v3.5 |
+| Jina Embeddings | Jina Reranker v2 |
+| OpenAI text-embedding-3-small | Cohere Rerank v3.5 |
+| OpenAI text-embedding-3-large | Voyage Rerank-2 |
+| Voyage Embeddings | Voyage Rerank-2 |
+
+---
+
+# Approximate Performance Ranking
+
+| Rank | Model |
+|-----:|-------|
+| 🥇 | Voyage Rerank-2 |
+| 🥈 | Cohere Rerank-v3.5 |
+| 🥉 | BGE-reranker-v2-Gemma |
+| 4 | BGE-reranker-v2-M3 |
+| 5 | Jina Reranker v2 |
+| 6 | BGE-reranker-large |
+| 7 | Electra Cross Encoder |
+| 8 | MiniLM-L12 |
+| 9 | MiniLM-L6 |
+
+---
+
+# Recommendations
+
+| Scenario | Recommended Reranker |
+|----------|----------------------|
+| Learning | MiniLM-L6 |
+| Fast local RAG | BGE-reranker-base |
+| Best open source | BGE-reranker-v2-M3 |
+| Long-context RAG | Jina Reranker v2 |
+| Enterprise RAG | BGE-reranker-large |
+| Highest API quality | Voyage Rerank-2 |
+| Best multilingual | Cohere Rerank Multilingual |
+| Best price/performance | Cohere Rerank-v3.5 |
+
+---
+
+# Key Points
+
+- A reranker **does not replace** an embedding model.
+- Retrieval is typically **Embedding → Vector Database → Reranker → LLM**.
+- Rerankers are **cross-encoders**, meaning they process the query and document together.
+- They are significantly **more accurate** than cosine similarity but also **slower**.
+- A common production setup retrieves **Top 20–100** candidates using embeddings, then reranks them and passes only the **Top 3–10** to the LLM.
+- Rerankers improve ranking quality but **do not generate embeddings** and **cannot perform vector search**.
 
 ----
 ----
@@ -278,7 +525,7 @@ The algorithm is the Self-Attention mechanism.
 ![Attention Is All You Need Transformer](self-attention-paper.png)
 
 
-## ✅ Completed
+# ✅ Completed
 ## RAG
 
 # How it works — 3 phases
