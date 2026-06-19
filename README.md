@@ -1,6 +1,7 @@
 # GEN AI & LangChain & LangGraph & Deep Agents ([Link](./Deep-Agents.md)) (via Example Learning)
 
-> Last updated: June 2026 
+> Last updated: June 2026 and also covers some testcases using vitest
+> covered some testcases using vitest
  
 ## 🧠 Also covers RAG VS Fine Tuning topic (Theory) ([Detailed](./fine-tune-rag.md))
 

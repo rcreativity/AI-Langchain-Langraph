@@ -54,7 +54,7 @@ const retrieve = tool(
 );
 
 // ─── 5. AGENT ─────────────────────────────────────────────────────────────────
-const agent = createAgent({
+export const agent = createAgent({
     model: "gpt-4.1-mini",
     apiKey: process.env.OPENAI_API_KEY,
     tools: [retrieve],

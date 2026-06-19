@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1781880532508" clover="3.2.0">
+  <project timestamp="1781880532508" name="All files">
+    <metrics statements="22" coveredstatements="22" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4" elements="26" coveredelements="26" complexity="0" loc="22" ncloc="22" packages="2" files="3" classes="3"/>
+    <package name="rag">
+      <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="normal-rag.js" path="/Users/ravikumarr/Documents/Dev/AI ⚡️/MCP/agent-rag-mcp/rag/normal-rag.js">
+        <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="42" count="6" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="ways-to-create-agent.src-testing">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="agent.js" path="/Users/ravikumarr/Documents/Dev/AI ⚡️/MCP/agent-rag-mcp/ways-to-create-agent/src-testing/agent.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="5" count="2" type="stmt"/>
+      </file>
+      <file name="tools.js" path="/Users/ravikumarr/Documents/Dev/AI ⚡️/MCP/agent-rag-mcp/ways-to-create-agent/src-testing/tools.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
