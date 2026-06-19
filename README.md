@@ -75,8 +75,175 @@
 
 ---
 
+## Embedding Models Comparison (Open Source → Paid)
 
+### Open Source Embedding Models
+
+| Model | Organization | Dimensions | Max Context | Multilingual | Best Use Case |
+|--------|--------------|-----------:|------------:|:------------:|---------------|
+| all-MiniLM-L6-v2 | Sentence Transformers | **384** | 256–512 | ❌ | Lightweight semantic search |
+| all-MiniLM-L12-v2 | Sentence Transformers | **384** | 256–512 | ❌ | Better accuracy than L6 |
+| all-mpnet-base-v2 | Sentence Transformers | **768** | 512 | ❌ | High-quality sentence embeddings |
+| BGE-small-en-v1.5 | BAAI | **384** | 512 | ❌ | Fast RAG |
+| BGE-base-en-v1.5 | BAAI | **768** | 512 | ❌ | General RAG |
+| BGE-large-en-v1.5 | BAAI | **1024** | 512 | ❌ | High-quality retrieval |
+| bge-m3 | BAAI | **1024** | 8192 | ✅ | Long-context multilingual RAG |
+| e5-small-v2 | Microsoft | **384** | 512 | ✅ | Lightweight retrieval |
+| e5-base-v2 | Microsoft | **768** | 512 | ✅ | Balanced performance |
+| e5-large-v2 | Microsoft | **1024** | 512 | ✅ | Better semantic search |
+| gte-small | Alibaba | **384** | 512 | ❌ | Fast embeddings |
+| gte-base | Alibaba | **768** | 512 | ❌ | General-purpose search |
+| gte-large | Alibaba | **1024** | 512 | ❌ | Enterprise retrieval |
+| Nomic Embed Text v1 | Nomic AI | **768** | 8192 | ✅ | Long documents |
+| Snowflake Arctic Embed | Snowflake | **1024** | 8192 | ✅ | Enterprise RAG |
+| jina-embeddings-v3 | Jina AI | **1024** | 8192 | ✅ | Multilingual search |
+| Qwen3 Embedding | Alibaba | **1024** | 32768 | ✅ | Long-context multilingual applications |
+
+---
+
+# Commercial / Paid API Models
+
+| Model | Company | Dimensions | Max Context | Best Use Case |
+|--------|---------|-----------:|------------:|---------------|
+| text-embedding-3-small | OpenAI | **1536** | 8192 | Cost-effective RAG |
+| text-embedding-3-large | OpenAI | **3072** | 8192 | Highest OpenAI retrieval quality |
+| embed-english-v3.0 | Cohere | **1024** | 512 | English semantic search |
+| embed-multilingual-v3.0 | Cohere | **1024** | 512 | 100+ languages |
+| voyage-3-lite | Voyage AI | **512** | 32000 | Fast retrieval |
+| voyage-3 | Voyage AI | **1024** | 32000 | State-of-the-art retrieval |
+| voyage-code-3 | Voyage AI | **1024** | 32000 | Code search |
+
+---
+
+# Dimension Comparison
+
+| Dimensions | Typical Models | Storage | Speed | Retrieval Quality |
+|------------:|---------------|---------|-------|-------------------|
+| **384** | MiniLM, BGE-small, E5-small | Very Low | ⭐⭐⭐⭐⭐ | Good |
+| **512** | Voyage-3-lite | Low | ⭐⭐⭐⭐ | Good |
+| **768** | MPNet, E5-base, GTE-base, Nomic | Medium | ⭐⭐⭐⭐ | Very Good |
+| **1024** | BGE-large, E5-large, Jina, Cohere, Voyage | High | ⭐⭐⭐ | Excellent |
+| **1536** | OpenAI text-embedding-3-small | Higher | ⭐⭐⭐ | Excellent |
+| **3072** | OpenAI text-embedding-3-large | Highest | ⭐⭐ | Best (OpenAI) |
+
+---
+
+# Storage Requirement
+
+Assuming **float32 (4 bytes/value)**.
+
+| Dimensions | Size per Embedding |
+|------------:|-------------------:|
+| 384 | ~1.5 KB |
+| 512 | ~2 KB |
+| 768 | ~3 KB |
+| 1024 | ~4 KB |
+| 1536 | ~6 KB |
+| 3072 | ~12 KB |
+
+Example:
+
+- 1 million embeddings (384 dimensions) ≈ **1.5 GB**
+- 1 million embeddings (1536 dimensions) ≈ **6 GB**
+- 1 million embeddings (3072 dimensions) ≈ **12 GB**
+
+---
+
+# Which Model Should You Choose?
+
+## Small Projects
+
+| Requirement | Recommendation |
+|------------|----------------|
+| Local RAG | BGE-small |
+| Fast semantic search | MiniLM-L6 |
+| Low memory | E5-small |
+
+---
+
+## Medium Projects
+
+| Requirement | Recommendation |
+|------------|----------------|
+| Production RAG | BGE-base |
+| General search | MPNet |
+| Multilingual | E5-base |
+
+---
+
+## Enterprise
+
+| Requirement | Recommendation |
+|------------|----------------|
+| High accuracy | BGE-large |
+| Long documents | Jina v3 |
+| Enterprise knowledge base | Snowflake Arctic |
+
+---
+
+## Best API Models
+
+| Requirement | Recommendation |
+|------------|----------------|
+| Lowest cost | OpenAI text-embedding-3-small |
+| Best overall | OpenAI text-embedding-3-large |
+| Best multilingual | Cohere Multilingual |
+| Best retrieval benchmark | Voyage-3 |
+
+---
+
+# Performance Ranking (Approximate)
+
+| Rank | Model |
+|-----:|-------|
+| 🥇 | Voyage-3 |
+| 🥈 | OpenAI text-embedding-3-large |
+| 🥉 | BGE-M3 |
+| 4 | Jina Embeddings v3 |
+| 5 | BGE-large |
+| 6 | E5-large |
+| 7 | Snowflake Arctic |
+| 8 | MPNet |
+| 9 | BGE-base |
+| 10 | MiniLM |
+
+---
+
+# Quick Recommendations
+
+| Scenario | Recommended Model |
+|----------|-------------------|
+| Learning embeddings | all-MiniLM-L6-v2 |
+| Free local RAG | BGE-base-en-v1.5 |
+| Best open-source | BGE-M3 |
+| Multilingual RAG | Jina Embeddings v3 |
+| Long-context documents | Qwen3 Embedding |
+| Best paid API | text-embedding-3-large |
+| Best price/performance | text-embedding-3-small |
+| Code search | Voyage Code-3 |
+
+---
+
+# Important Notes
+
+- Higher dimensions **do not automatically mean better quality**.
+- Embeddings from different models are **not compatible** with each other.
+- Always use the **same embedding model** for:
+  - Document embeddings
+  - Query embeddings
+- If you change embedding models, **re-embed all stored documents** before querying.
+- For production RAG systems, retrieval quality depends on:
+  1. Embedding model
+  2. Chunking strategy
+  3. Vector database
+  4. Similarity metric
+  5. Reranking model
+
+
+----
+----
 ## Transformer Self Attention All You Need (research paper)
+
 ```Attention Is All You Need (Research Paper - 2017)
                      │
                      ▼
