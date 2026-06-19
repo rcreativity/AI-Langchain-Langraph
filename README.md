@@ -217,6 +217,8 @@ Website / PDF / CSV
 | `@langchain/langgraph` | `^1.3.1+` | `StateGraph`, `MemorySaver`, `createReactAgent` |
 | `@langchain/langgraph-swarm` | `^1.0.2` | `createSwarm`, `SwarmState`, `createHandoffTool` |
 | `@langchain/langgraph-supervisor` | latest | `createSupervisor` |
+| `@modelcontextprotocol/sdk/server/mcp.js` | latest | `create MCP Server` |
+| `@modelcontextprotocol/sdk/client/index.js` | latest | `create MCP client` |
 | `dotenv` | latest | Use `import "dotenv/config"` in ESM |
 
 ---
