@@ -1,10 +1,15 @@
-# LangChain & LangGraph & Deep Agents ([Link](./Deep-Agents.md)) (via Example Learning)
+# AI & LangChain & LangGraph & Deep Agents ([Link](./Deep-Agents.md)) (via Example Learning)
 
 > Last updated: June 2026 
 
-## 🧠 Also covers RAG VS Fine Tuning topic (Theory)
+## 🧠 Also covers RAG VS Fine Tuning topic (Theory) ([Detailed](./fine-tune-rag.md.md))
 
-## Common LLM Parameters (([LLM Detained Link](./LLM-params.md)))
+- types of fine tunning Lora and QLora
+- Full fine tuning and Parameter Efficient Fine tuning
+- RAG is slower than Fine-Tuning" refers to inference (runtime) latency, not the overall system.
+- RAG + Fine-Tuning = ❤️
+
+## Common LLM Parameters ([LLM Detained Link](./LLM-params.md))
 
 | Parameter           | Description                                              | Typical Range  | Default         |
 | ------------------- | -------------------------------------------------------- | -------------- | --------------- |
@@ -21,6 +26,42 @@
 | `response_format`   | Control output format                                    | text / JSON    | text            |
 
 ---
+
+
+## Transformer Self Attention All You Need (research paper)
+```Attention Is All You Need (Research Paper - 2017)
+                     │
+                     ▼
+Introduced the Transformer Architecture
+                     │
+                     ▼
+Uses Self-Attention Mechanism inside the Transformer 
+                     │
+                     ▼
+Modern LLMs (GPT, Llama, Gemini, DeepSeek, Qwen, Mistral)
+
+
+Hierarchy
+=========
+Attention Is All You Need (Paper)
+            │
+            ▼
+Transformer (Architecture)
+            │
+            ├── Self-Attention
+            ├── Multi-Head Attention
+            ├── Feed Forward Network
+            ├── LayerNorm
+            ├── Residual Connection
+            └── Positional Encoding
+                     │
+                     ▼
+              Modern LLMs
+
+The algorithm is the Self-Attention mechanism.
+```
+![Attention Is All You Need Transformer](self-attention-paper.png)
+
 
 ## ✅ Completed
 ## RAG
