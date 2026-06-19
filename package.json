@@ -1,0 +1,35 @@
+{
+  "name": "basic-rag",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@langchain/langgraph": "^1.4.4",
+    "@langchain/langgraph-supervisor": "^1.1.1",
+    "@langchain/langgraph-swarm": "^1.0.2",
+    "dotenv": "^17.4.2",
+    "langchain": "^1.4.5",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@langchain/core": "^1.2.0",
+    "@langchain/openai": "^1.5.1",
+    "dotenv": "^17.4.2",
+    "langchain": "^1.4.5"
+  },
+  "scripts": {
+    "lcAgent": "node ways-to-create-agent/langchainAgent.js",
+    "lgAgent": "node ways-to-create-agent/langraphAgent.js",
+    "lgAgentGraph": "node langraph/basicgraph.js",
+    "lgAgentGraphMem": "node langraph/graphwithmemory.js",
+    "swarmAgentlg": "node LangSwarn/multiagent.js",
+    "swarmAgentGraph": "node LangSwarn/multiagentGraph.js",
+    "swarmAgentManually": "node LangSwarn/swarnManually.js",
+    "guardrails": "node guardrails/guardrails.js",
+    "langgraphSupervisor": "node langgraph-supervisor/langgraph-supervisor.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
