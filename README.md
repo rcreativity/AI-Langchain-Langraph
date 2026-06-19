@@ -4,7 +4,8 @@
 
 ## 🧠 Also covers RAG VS Fine Tuning topic (Theory) ([Detailed](./fine-tune-rag.md.md))
 
-- types of fine tunning Lora and QLora
+- Types of fine tuning and Parameter Efficient Fine tuning
+- Parameter Efficient Fine tuning methods Lora and QLora
 - Full fine tuning and Parameter Efficient Fine tuning
 - RAG is slower than Fine-Tuning" refers to inference (runtime) latency, not the overall system.
 - RAG + Fine-Tuning = ❤️
