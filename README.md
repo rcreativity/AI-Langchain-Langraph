@@ -2,11 +2,28 @@
 
 > Last updated: June 2026 
 
-## 🧠 Also covers RAG VS Fine Tuning topic
+## 🧠 Also covers RAG VS Fine Tuning topic (Theory)
+
+## Common LLM Parameters (([LLM Detained Link](./Deep-Agents.md)))
+
+| Parameter           | Description                                              | Typical Range  | Default         |
+| ------------------- | -------------------------------------------------------- | -------------- | --------------- |
+| `temperature`       | Controls randomness                                      | 0.0 – 2.0      | 1.0             |
+| `top_p`             | Nucleus sampling                                         | 0.0 – 1.0      | 1.0             |
+| `max_tokens`        | Maximum output tokens                                    | Model limit    | Varies          |
+| `stop`              | Stops generation at specific strings                     | String / Array | None            |
+| `seed`              | Makes output reproducible                                | Integer        | Random          |
+| `presence_penalty`  | Encourages new topics                                    | -2.0 – 2.0     | 0               |
+| `frequency_penalty` | Reduces repeated words                                   | -2.0 – 2.0     | 0               |
+| `top_k`             | Samples from top K tokens (not supported by every model) | 1 – 100+       | Model dependent |
+| `n`                 | Number of completions to generate                        | 1+             | 1               |
+| `stream`            | Stream tokens as they're generated                       | true / false   | false           |
+| `response_format`   | Control output format                                    | text / JSON    | text            |
+
 ---
 
 ## ✅ Completed
-### RAG
+## RAG
 
 # How it works — 3 phases
 
