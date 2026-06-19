@@ -1,7 +1,7 @@
-# AI & LangChain & LangGraph & Deep Agents ([Link](./Deep-Agents.md)) (via Example Learning)
+# GEN AI & LangChain & LangGraph & Deep Agents ([Link](./Deep-Agents.md)) (via Example Learning)
 
 > Last updated: June 2026 
-
+ 
 ## 🧠 Also covers RAG VS Fine Tuning topic (Theory) ([Detailed](./fine-tune-rag.md.md))
 
 - Types of fine tuning are Full fine tuning and Parameter Efficient Fine tuning (⑆ Lora and QLora)
