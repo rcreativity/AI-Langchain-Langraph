@@ -1,4 +1,4 @@
-# LangChain & LangGraph (via Example Learning)
+# LangChain & LangGraph & [Deep Agents](./Deep-Agents.md) (via Example Learning)
 
 > Last updated: June 2026
 
@@ -93,6 +93,7 @@ Website / PDF / CSV
 - `safetyGuardrailMiddleware` — custom `createMiddleware` with `afterModel` hook
 - Content filtering and blocking unsafe responses with `jumpTo: "end"`
 - Middleware naming rules — each middleware can only be registered once
+- Middleware list - https://reference.langchain.com/python/deepagents/middleware
 
 ### 🔗 LangChain (v1)
 - `createAgent` — new API replacing deprecated `createReactAgent` from LangGraph
