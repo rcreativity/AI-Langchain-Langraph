@@ -8,7 +8,7 @@
 - Parameter Efficient Fine tuning methods Lora and QLora
     -  PEFT (LoRA)
         ```text
-        Keep the original model **frozen** and train only a **small adapter**.
+        PEFT (LoRA) Keep the original model frozen and train only a small adapter.
         W′ = W + BA
 
         Where:
@@ -20,7 +20,23 @@
 
             New Model = Original Model + Small Update
 
-            Example
+            Example 1
+            =========
+
+            Original model:
+
+            1,000,000 parameters
+
+            PEFT trains:
+
+            10,000 parameters
+
+            So:
+
+            ❌ Full Fine-Tuning → 1,000,000 parameters
+            ✅ PEFT → 10,000 parameters
+
+            Example 2
             =========
             Original model: 
             7 billion parameters
