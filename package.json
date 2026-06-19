@@ -31,7 +31,8 @@
     "swarmAgentManually": "node LangSwarn/swarnManually.js",
     "guardrails": "node guardrails/guardrails.js",
     "langgraphSupervisor": "node langgraph-supervisor/langgraph-supervisor.js",
-    "rag": "node rag/normal-rag.js"
+    "rag": "node rag/normal-rag.js",
+    "rag-agent": "node rag/rag-agent.js"
   },
   "keywords": [],
   "author": "",
