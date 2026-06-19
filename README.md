@@ -1,4 +1,4 @@
-# LangChain & LangGraph & [Deep Agents](./Deep-Agents.md) (via Example Learning)
+# LangChain & LangGraph & Deep Agents[Link](./Deep-Agents.md) (via Example Learning)
 
 > Last updated: June 2026
 
@@ -157,7 +157,7 @@ Website / PDF / CSV
 
 ### ✳️ @langchain/langgraph-checkpoint-sqlite (long term memory and chekpointer)
 
-### [MCP](./mcp.md) 
+### MCP[Link](./mcp.md) 
 -  MCP (Model Context Protocol) like MCP = USB-C for AI applications.
 -  MCP (Model Context Protocol) is a standard protocol that lets AI models securely connect to external tools, data sources, and services using a common interface.
 - MCP (Model Context Protocol) types - 1️⃣ MCP Host, 2️⃣ MCP Client, 3️⃣ MCP Server
