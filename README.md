@@ -4,8 +4,39 @@
  
 ## 🧠 Also covers RAG VS Fine Tuning topic (Theory) ([Detailed](./fine-tune-rag.md))
 
-- Types of fine tuning are Full fine tuning and Parameter Efficient Fine tuning (⑆ Lora and QLora)
+- Types of fine tuning are Full fine tuning and Parameter Efficient Fine tuning(PEFT) (⑆ Lora and QLora)
 - Parameter Efficient Fine tuning methods Lora and QLora
+    -  PEFT (LoRA)
+        ```text
+        Keep the original model **frozen** and train only a **small adapter**.
+        W′ = W + BA
+
+        Where:
+            W = Original weights (do not change)
+            BA = Small trainable adapter
+            W' = Final weights used during inference
+
+            Think of it as:
+
+            New Model = Original Model + Small Update
+
+            Example
+            =========
+            Original model: 
+            7 billion parameters
+
+            PEFT trains:
+            20–100 million parameters (depends on the LoRA configuration)
+
+            The remaining 6.9+ billion parameters stay unchanged.
+
+            🏆 One-line Formula to Remember
+               New Model = Original Model + Small Adapter
+
+               Or mathematically:
+               W′ =W+BA
+
+               This is the key formula behind LoRA-based PEFT and is the one most commonly asked about in interviews.
 - RAG is slower than Fine-Tuning" refers to inference (runtime) latency, not the overall system.
 - RAG + Fine-Tuning = ❤️
 
