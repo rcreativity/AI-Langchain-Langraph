@@ -4,7 +4,7 @@
 
 ## 🧠 Also covers RAG VS Fine Tuning topic (Theory)
 
-## Common LLM Parameters (([LLM Detained Link](./Deep-Agents.md)))
+## Common LLM Parameters (([LLM Detained Link](./LLM-params.md)))
 
 | Parameter           | Description                                              | Typical Range  | Default         |
 | ------------------- | -------------------------------------------------------- | -------------- | --------------- |
