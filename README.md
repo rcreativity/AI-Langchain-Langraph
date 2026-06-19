@@ -157,14 +157,48 @@ Website / PDF / CSV
 
 ### ✳️ @langchain/langgraph-checkpoint-sqlite (long term memory and chekpointer)
 
-### ✳️ MCP Server
+### [MCP](./mcp.md) 
+-  MCP (Model Context Protocol) like MCP = USB-C for AI applications.
+-  MCP (Model Context Protocol) is a standard protocol that lets AI models securely connect to external tools, data sources, and services using a common interface.
+- MCP (Model Context Protocol) types - 1️⃣ MCP Host, 2️⃣ MCP Client, 3️⃣ MCP Server
+- ✳️ 1️⃣ MCP Host - The application that uses MCP 🕵Eg. Claude Desktop, Cursor, VS Code, ChatGPT (future integrations)
+- ✳️ 2️⃣ MCP Client - Connects the host to one or more MCP servers 🕵Eg. Requests available tools, resources, and prompts
+- ✳️ 3️⃣ MCP Host - Exposes tools, resources, and prompts to the client 🕵Eg. Filesystem Server, GitHub Server, PostgreSQL Server
+
+```
+                MCP Architecture
+
++----------------+
+|    MCP Host    |
+| (Claude/Cursor)|
++-------+--------+
+        |
+        |
++-------v--------+
+|   MCP Client   |
++-------+--------+
+        |
+        |
++-------v------------------------------+
+|             MCP Server               |
+|                                      |
+|  • Tools                             |
+|  • Resources                         |
+|  • Prompts                           |
++--------------------------------------+
+```
+
+
+### ✳️ MCP Server (Completed)
+- MCP Server - 1️⃣ Tools (Functions the AI can execute Eg. Run SQL, Call API), 2️⃣ Resources (Data the AI can read Eg. Documents, Database rows, Logs), 3️⃣ Prompts (Reusable prompt templates Eg. Code review, SQL generation)
 - Setting up a Model Context Protocol server
 - Exposing tools and resources over MCP
-- Transport options — `stdio`, `sse`, `http`
+- Transport options — `stdio`, `sse (Server-Sent Events)`, `http`, `Streamable HTTP`
 - Tool schema definition for MCP
 - Connecting MCP server to LangGraph agents
 
-### ✳️ MCP Client
+### ✳️ MCP Client (Completed)
+- An MCP Client is the component that communicates with an MCP Server on behalf of the AI application.
 - Connecting to an MCP server from LangChain/LangGraph
 - `MultiServerMCPClient` — managing multiple MCP server connections
 - Loading MCP tools into a LangGraph agent
