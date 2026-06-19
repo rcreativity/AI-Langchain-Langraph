@@ -2,7 +2,7 @@
 
 > Last updated: June 2026 
  
-## 🧠 Also covers RAG VS Fine Tuning topic (Theory) ([Detailed](./fine-tune-rag.md.md))
+## 🧠 Also covers RAG VS Fine Tuning topic (Theory) ([Detailed](./fine-tune-rag.md))
 
 - Types of fine tuning are Full fine tuning and Parameter Efficient Fine tuning (⑆ Lora and QLora)
 - Parameter Efficient Fine tuning methods Lora and QLora
