@@ -1,4 +1,4 @@
-# LangChain & LangGraph — Learning Progress
+# LangChain & LangGraph
 
 > Last updated: June 2026
 
