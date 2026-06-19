@@ -9,11 +9,11 @@
     -  PEFT (LoRA)
         ```text
         PEFT (LoRA) Keep the original model frozen and train only a small adapter.
-        W′ = W + BA
+        W′ = W + ΔW
 
         Where:
             W = Original weights (do not change)
-            BA = Small trainable adapter
+            ΔW = Small trainable adapter
             W' = Final weights used during inference
 
             Think of it as:
@@ -50,7 +50,7 @@
                New Model = Original Model + Small Adapter
 
                Or mathematically:
-               W′ =W+BA
+               W′ =W+ΔW
 
                This is the key formula behind LoRA-based PEFT and is the one most commonly asked about in interviews.
 - RAG is slower than Fine-Tuning" refers to inference (runtime) latency, not the overall system.
